@@ -3,7 +3,8 @@ var bodyParser = require('body-parser');
 var app = express();
 var dummyList = {};
 var whoIsAlive = {};
-var oneMinuteTooOld = 1000 * 60;
+var sixSecondsTooOld = 1000 * 6;
+var port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({
   extended: false
@@ -28,22 +29,26 @@ app.get("/who-is-online", function(req, res) {
   res.send(Object.keys(dummyList));
 });
 
-var server = app.listen(3000, function() {
+var server = app.listen(port, function() {
   var host = server.address().address;
-  var port = server.address().port;
-  console.log('Example app listening at http://%s:%s', host, port);
+  var express_port = server.address().port;
+  console.log('Example app listening at http://%s:%s', host, express_port);
 });
 
+setInterval(cleanUpOldUsers, 2000);
 
-function whoIsAliveTouch(name) {
+function cleanUpOldUsers(){
   var now = Date.now();
-  whoIsAlive[name] = now;
-  //Clean old users  - need to be self running
   Object.keys(whoIsAlive).forEach(function(item) {
-    if((whoIsAlive[item] + oneMinuteTooOld) < (now)) {
+    if((whoIsAlive[item] + sixSecondsTooOld) < (now)) {
       console.log("Removing - " + item);
       delete whoIsAlive[item];
       delete dummyList[item];
     }
   });
+}
+
+function whoIsAliveTouch(name) {
+  var now = Date.now();
+  whoIsAlive[name] = now;
 }
