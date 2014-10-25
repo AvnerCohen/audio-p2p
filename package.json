@@ -1,0 +1,16 @@
+{
+  "name": "fiverr-p2p",
+  "version": "0.0.1",
+  "description": "Fiverr Peer2Peer call",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.9.1",
+    "express": "^4.9.8"
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>P2P Fiverr - Go Crazy!!</title>
+  <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+
+  <div class="pure-g">
+
+      <!-- Video area -->
+      <div class="pure-u-2-3" id="video-container">
+        <audio id="their-audio" autoplay controls></audio>
+      </div>
+
+      <!-- Steps -->
+      <div class="pure-u-1-3">
+        <h2>Fiverr-P2P</h2>
+
+        <!-- Get local audio/video stream -->
+        <div id="step1">
+          <p>Please click `allow` on the top of the screen so we can access your webcam and microphone for calls.</p>
+          <div id="step1-error">
+            <p>Failed to access the webcam and microphone. Make sure to run this demo on an http server and click allow when asked for permission by the browser.</p>
+            <a href="#" class="pure-button pure-button-error" id="step1-retry">Try again</a>
+          </div>
+        </div>
+
+        <!-- Call in progress -->
+        <div id="step3">
+          <p>Currently in call with <span id="their-id">...</span></p>
+          <p><a href="#" class="pure-button pure-button-error" id="end-call">End call</a></p>
+        </div>
+      </div>
+
+      <div class="pure-u-1">
+        <p>
+          Who are you <input type="text" class="whoami" placeholder="Place your name to become online"/>
+          <a class="pure-button pure-button-primary whoami-set-js" href="#">Become online</a>
+        </p>
+        <div>  Who is online:</div>
+        <ul class="who-is-online"><ul>
+      </div>
+
+  </div>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script src="peer.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
